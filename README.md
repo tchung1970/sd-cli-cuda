@@ -24,7 +24,7 @@ The build script:
 ## Prerequisites
 
 ### System Requirements
-- Debian/Ubuntu-based Linux distribution
+- Debian/Ubuntu-based Linux distribution such as Ubuntu 24.04 LTS
 - NVIDIA GPU with CUDA support such as RTX 4000 Ada Generation
 
 ### Build Dependencies
