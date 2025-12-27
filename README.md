@@ -4,7 +4,7 @@ CUDA-accelerated Stable Diffusion backend for [wavespeed-desktop](https://github
 
 ## Overview
 
-This is a **modular plugin** designed to add CUDA GPU acceleration to wavespeed-desktop on any Linux system with an NVIDIA GPU.
+This is a **modular plugin** designed to add CUDA GPU acceleration to wavespeed-desktop on any Linux system with an NVIDIA GPU such as RTX 4000 Ada Generation.
 
 The package provides [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp) compiled with CUDA support, enabling high-performance local image generation through wavespeed-desktop.
 
