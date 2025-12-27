@@ -1,4 +1,4 @@
-# sd-cpp-cuda
+# sd-cli-cuda
 
 CUDA-accelerated Stable Diffusion backend for [wavespeed-desktop](https://github.com/WaveSpeedAI/wavespeed-desktop).
 
@@ -54,14 +54,14 @@ sudo apt install -y \
 The script will:
 1. Clone stable-diffusion.cpp to `./src/` (shallow clone)
 2. Build with CUDA enabled using all available CPU cores
-3. Create `sd-cpp-cuda_amd64.deb` in the repo root
+3. Create `sd-cli-cuda_amd64.deb` in the repo root
 
 Build time: ~3-5 minutes depending on hardware.
 
 ## Installation
 
 ```bash
-sudo dpkg -i sd-cpp-cuda_amd64.deb
+sudo dpkg -i sd-cli-cuda_amd64.deb
 ```
 
 ### What Gets Installed
@@ -76,7 +76,7 @@ After installation, wavespeed-desktop will automatically detect and use the CUDA
 ## Uninstallation
 
 ```bash
-sudo dpkg -r sd-cpp-cuda
+sudo dpkg -r sd-cli-cuda
 ```
 
 ## Usage
@@ -97,7 +97,7 @@ Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 
 | Field | Value |
 |-------|-------|
-| Package Name | sd-cpp-cuda |
+| Package Name | sd-cli-cuda |
 | Version | 1.0.0 |
 | Architecture | amd64 |
 | Maintainer | WaveSpeed |
@@ -128,6 +128,6 @@ Try reducing image dimensions or use a quantized model (.gguf).
 
 ## License
 
-sd-cpp-cuda is licensed under MIT License.
+sd-cli-cuda is licensed under MIT License.
 
 stable-diffusion.cpp is licensed under MIT License.

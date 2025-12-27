@@ -2,7 +2,7 @@
 set -e
 
 # Configuration
-PKG_NAME="sd-cpp-cuda"
+PKG_NAME="sd-cli-cuda"
 PKG_VERSION="1.0.0"
 PKG_ARCH="amd64"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -111,7 +111,7 @@ mkdir -p /root/.config/wavespeed-desktop/sd-bin
 ln -sf /usr/bin/sd-cli /root/.config/wavespeed-desktop/sd-bin/sd
 
 echo ""
-echo "sd-cpp-cuda installed successfully!"
+echo "sd-cli-cuda installed successfully!"
 echo "Binary: /usr/bin/sd-cli"
 echo "Symlinks created in ~/.config/wavespeed-desktop/sd-bin/sd"
 echo ""
