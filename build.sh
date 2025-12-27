@@ -9,7 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="${SCRIPT_DIR}/src"
 BUILD_DIR="${SRC_DIR}/build"
 DEB_BUILD_DIR="/tmp/sd-cpp-deb"
-DEB_DIR="${DEB_BUILD_DIR}/${PKG_NAME}_${PKG_ARCH}"
+DEB_DIR="${DEB_BUILD_DIR}/${PKG_NAME}_${PKG_VERSION}_${PKG_ARCH}"
 OUTPUT_DIR="${SCRIPT_DIR}"
 
 echo "=== Building stable-diffusion.cpp with CUDA support ==="
@@ -160,7 +160,7 @@ cd "$DEB_BUILD_DIR"
 dpkg-deb --build --root-owner-group "${DEB_DIR}"
 
 # Move to git repo directory
-DEB_FILE="${PKG_NAME}_${PKG_ARCH}.deb"
+DEB_FILE="${PKG_NAME}_${PKG_VERSION}_${PKG_ARCH}.deb"
 mv "${DEB_BUILD_DIR}/${DEB_FILE}" "${OUTPUT_DIR}/"
 
 echo ""
