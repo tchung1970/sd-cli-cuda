@@ -69,7 +69,6 @@ sudo dpkg -i sd-cpp-cuda_amd64.deb
 | Path | Description |
 |------|-------------|
 | `/usr/bin/sd-cli` | Command-line image generation tool |
-| `/usr/bin/sd-server` | HTTP API server |
 | `~/.config/wavespeed-desktop/sd-bin/sd` | Symlink to sd-cli (for wavespeed-desktop integration) |
 
 After installation, wavespeed-desktop will automatically detect and use the CUDA backend for GPU-accelerated image generation.
@@ -93,15 +92,6 @@ See [example.txt](example.txt) for a complete command-line example using wavespe
 Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 
 ![output.png](output.png)
-
-### sd-server (HTTP API)
-
-Start the server:
-```bash
-sd-server -m /path/to/model.safetensors --host 0.0.0.0 --port 8080
-```
-
-The server provides an OpenAI-compatible API endpoint at `/v1/images/generations`.
 
 ## Supported Models
 
