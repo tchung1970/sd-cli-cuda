@@ -128,4 +128,6 @@ Try reducing image dimensions or use a quantized model (.gguf).
 
 ## License
 
+sd-cpp-cuda is licensed under MIT License.
+
 stable-diffusion.cpp is licensed under MIT License.
