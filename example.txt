@@ -4,6 +4,9 @@
 # Check if ComfyUI is running (may conflict with sd-cli for GPU resources):
 ps -ef | grep -i comfy
 
+# Kill ComfyUI if needed:
+sudo pkill -f "python main.py"
+
 # Usage with LLM and VAE (like wavespeed-desktop):
 sd-cli \
   --diffusion-model ~/.config/wavespeed-desktop/models/stable-diffusion/z_image_turbo-Q4_K.gguf \
