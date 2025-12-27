@@ -1,0 +1,9 @@
+# Source directory (cloned from upstream)
+src/
+
+# Build artifacts
+*.deb
+
+# Editor files
+*.swp
+*~

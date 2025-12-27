@@ -1,0 +1,38 @@
+# stable-diffusion-cpp-cuda Usage Example
+# Based on wavespeed-desktop Z-Image generation
+
+# Usage with LLM and VAE (like wavespeed-desktop):
+sd-cli \
+  --diffusion-model ~/.config/wavespeed-desktop/models/stable-diffusion/z_image_turbo-Q4_K.gguf \
+  --llm ~/.config/wavespeed-desktop/models/stable-diffusion/auxiliary/Qwen3-4B-Instruct-2507-UD-Q4_K_XL.gguf \
+  --vae ~/.config/wavespeed-desktop/models/stable-diffusion/auxiliary/ae.safetensors \
+  -p "a fancy letter Z" \
+  -n "bad quality, low resolution, watermark" \
+  -W 1024 \
+  -H 1024 \
+  --steps 4 \
+  --cfg-scale 1 \
+  --sampling-method euler \
+  --scheduler simple \
+  --offload-to-cpu \
+  --diffusion-fa \
+  -v \
+  -o output.png
+
+# Parameters:
+#   --diffusion-model  : Path to the main model (.gguf)
+#   --llm              : Path to LLM/text encoder (.gguf)
+#   --vae              : Path to VAE (.safetensors)
+#   -p                 : Prompt
+#   -n                 : Negative prompt
+#   -W                 : Width (pixels)
+#   -H                 : Height (pixels)
+#   --steps            : Number of inference steps
+#   --cfg-scale        : Classifier-free guidance scale
+#   --seed             : Random seed for reproducibility
+#   --sampling-method  : Sampling method (euler, euler_a, dpm++2m, etc.)
+#   --scheduler        : Scheduler (simple, karras, etc.)
+#   --offload-to-cpu   : Offload to CPU when VRAM is limited
+#   --diffusion-fa     : Use Flash Attention
+#   -v                 : Verbose output
+#   -o                 : Output file path
