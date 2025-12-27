@@ -1,6 +1,6 @@
 # sd-cli-cuda
 
-CUDA-accelerated Stable Diffusion backend for [wavespeed-desktop](https://github.com/WaveSpeedAI/wavespeed-desktop).
+CUDA-accelerated Stable Diffusion plugin for [wavespeed-desktop](https://github.com/WaveSpeedAI/wavespeed-desktop).
 
 ## Overview
 
