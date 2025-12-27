@@ -94,26 +94,6 @@ Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 
 ![output.png](output.png)
 
-Common options:
-| Option | Description |
-|--------|-------------|
-| `--diffusion-model` | Path to diffusion model (.gguf, .safetensors) |
-| `--llm` | Path to LLM/text encoder (.gguf) |
-| `--vae` | Path to VAE (.safetensors) |
-| `-p, --prompt` | Text prompt for image generation |
-| `-n, --negative-prompt` | Negative prompt |
-| `-o, --output` | Output image path |
-| `--steps` | Number of sampling steps |
-| `--cfg-scale` | CFG scale |
-| `-W, --width` | Image width (pixels) |
-| `-H, --height` | Image height (pixels) |
-| `--seed` | Random seed (-1 for random) |
-| `--sampling-method` | Sampling method (euler, euler_a, dpm++2m, etc.) |
-| `--scheduler` | Scheduler (simple, karras, etc.) |
-| `--offload-to-cpu` | Offload to CPU when VRAM is limited |
-| `--diffusion-fa` | Use Flash Attention |
-| `-v` | Verbose output |
-
 ### sd-server (HTTP API)
 
 Start the server:
