@@ -26,7 +26,6 @@ The build script:
 ### System Requirements
 - Debian/Ubuntu-based Linux distribution
 - NVIDIA GPU with CUDA support such as RTX 4000 Ada Generation
-- At least 4GB free disk space for build
 
 ### Build Dependencies
 
