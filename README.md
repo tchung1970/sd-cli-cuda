@@ -1,6 +1,6 @@
 # sd-cpp-cuda
 
-CUDA-accelerated Stable Diffusion backend for [wavespeed-desktop](https://github.com/wavespeed-ai/wavespeed-desktop).
+CUDA-accelerated Stable Diffusion backend for [wavespeed-desktop](https://github.com/WaveSpeedAI/wavespeed-desktop).
 
 ## Overview
 
@@ -169,7 +169,7 @@ Try reducing image dimensions or use a quantized model (.gguf).
 
 ## Related Projects
 
-- [wavespeed-desktop](https://github.com/wavespeed-ai/wavespeed-desktop) - Desktop application for local AI image generation
+- [wavespeed-desktop](https://github.com/WaveSpeedAI/wavespeed-desktop) - Desktop application for local AI image generation
 - [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp) - Upstream C++ implementation
 
 ## License
