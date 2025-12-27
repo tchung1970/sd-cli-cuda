@@ -100,7 +100,6 @@ Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 | Package Name | sd-cli-cuda |
 | Version | 1.0.0 |
 | Architecture | amd64 |
-| Maintainer | WaveSpeed |
 | License | MIT (upstream) |
 | Source | https://github.com/leejet/stable-diffusion.cpp |
 
