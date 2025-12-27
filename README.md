@@ -128,6 +128,4 @@ Try reducing image dimensions or use a quantized model (.gguf).
 
 ## License
 
-This repository is maintained by WaveSpeed.
-
 stable-diffusion.cpp is licensed under MIT License.
