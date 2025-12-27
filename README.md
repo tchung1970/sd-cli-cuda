@@ -93,16 +93,6 @@ Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 
 ![output.png](output.png)
 
-## Supported Models
-
-- Stable Diffusion 1.x
-- Stable Diffusion 2.x
-- Stable Diffusion XL
-- Stable Diffusion 3
-- FLUX
-
-Model formats: `.safetensors`, `.ckpt`, `.gguf`
-
 ## Package Details
 
 | Field | Value |
