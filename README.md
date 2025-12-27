@@ -94,11 +94,6 @@ Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 
 ![output.png](output.png)
 
-Basic usage:
-```bash
-sd-cli -m /path/to/model.safetensors -p "a photo of a cat" -o output.png
-```
-
 Common options:
 | Option | Description |
 |--------|-------------|
