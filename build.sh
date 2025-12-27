@@ -59,7 +59,7 @@ Priority: optional
 Architecture: ${PKG_ARCH}
 Depends: libc6, libstdc++6, libgomp1
 Suggests: nvidia-cuda-toolkit
-Maintainer: WaveSpeed <support@wavespeed.ai>
+Maintainer: Thomas Chung <tchung1970@gmail.com>
 Description: Stable Diffusion inference with CUDA support
  stable-diffusion.cpp compiled with CUDA ${CUDA_VERSION} support.
  Includes sd-cli for command-line image generation.
@@ -148,7 +148,7 @@ ${PKG_NAME} (${PKG_VERSION}) stable; urgency=medium
 
   * Initial release with CUDA ${CUDA_VERSION} support
 
- -- WaveSpeed <support@wavespeed.ai>  $(date -R)
+ -- Thomas Chung <tchung1970@gmail.com>  $(date -R)
 EOF
 gzip -9 "${DEB_DIR}/usr/share/doc/${PKG_NAME}/changelog.Debian"
 
