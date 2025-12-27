@@ -43,7 +43,6 @@ mkdir -p "${DEB_DIR}/usr/share/doc/${PKG_NAME}"
 
 # Copy binaries
 cp bin/sd-cli "${DEB_DIR}/usr/bin/sd-cli"
-cp bin/sd-server "${DEB_DIR}/usr/bin/sd-server"
 
 # Make binaries executable
 chmod 755 "${DEB_DIR}/usr/bin/"*
@@ -63,8 +62,7 @@ Suggests: nvidia-cuda-toolkit
 Maintainer: WaveSpeed <support@wavespeed.ai>
 Description: Stable Diffusion inference with CUDA support
  stable-diffusion.cpp compiled with CUDA ${CUDA_VERSION} support.
- Includes sd-cli for command-line image generation and sd-server
- for HTTP API server.
+ Includes sd-cli for command-line image generation.
  .
  Built from https://github.com/leejet/stable-diffusion.cpp
 EOF
