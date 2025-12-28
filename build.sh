@@ -155,7 +155,7 @@ gzip -9 "${DEB_DIR}/usr/share/doc/${PKG_NAME}/changelog.Debian"
 # Build the package
 echo "Building .deb package..."
 cd "$DEB_BUILD_DIR"
-dpkg-deb --build --root-owner-group "${DEB_DIR}"
+dpkg-deb --build --root-owner-group -Zxz "${DEB_DIR}"
 
 # Move to git repo directory
 DEB_FILE="${PKG_NAME}_${PKG_VERSION}_${PKG_ARCH}.deb"
