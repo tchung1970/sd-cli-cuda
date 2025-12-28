@@ -153,6 +153,8 @@ EOF
 gzip -9 "${DEB_DIR}/usr/share/doc/${PKG_NAME}/changelog.Debian"
 
 # Build the package
+# Use xz compression (-Zxz) instead of default zstd for better compatibility
+# zstd causes "not a Debian format archive" errors on older systems
 echo "Building .deb package..."
 cd "$DEB_BUILD_DIR"
 dpkg-deb --build --root-owner-group -Zxz "${DEB_DIR}"
