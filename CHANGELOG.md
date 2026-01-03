@@ -6,10 +6,14 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - CUDA memory check before image generation
-  - Displays GPU device info and memory status (free/total/used)
-  - Exits immediately with error when free GPU memory is below 4GB
-  - Suggests closing GPU-intensive applications like ComfyUI
-  - Provides kill commands for ComfyUI processes
+  - Exits immediately with "CUDA Out of Memory!" when free GPU memory is below 4GB
+  - Checks memory before any CUDA initialization to provide clean error messages
+
+### Changed
+- Improved CUDA error messages for wavespeed-desktop integration
+  - OOM errors now display "CUDA Out of Memory!" instead of technical device info
+  - Suppressed verbose device info logs (moved to DEBUG level)
+  - Error output goes directly to stderr for proper capture by wavespeed-desktop
 
 ## [1.0.0] - 2025-12-28
 

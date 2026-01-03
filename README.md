@@ -118,16 +118,20 @@ nvidia-smi
 ```
 
 ### Out of VRAM
-sd-cli automatically checks GPU memory before running and exits immediately if memory is insufficient:
+sd-cli automatically checks GPU memory before running and displays a clean error message:
 ```
-[INFO ] CUDA device 0: NVIDIA RTX 4000 Ada Generation
-[INFO ]   Memory: 3851 MB free / 20008 MB total (16157 MB used)
-[WARN ] CUDA out of memory!
-[WARN ]   Device 0 (NVIDIA RTX 4000 Ada Generation) has only 3851 MB free, need 4096 MB
-[WARN ]   Close GPU apps (ComfyUI, etc): pkill -f comfyui
+CUDA Out of Memory!
 ```
 
-To free up VRAM, close ComfyUI: `pkill -f comfyui`
+In wavespeed-desktop, this appears as:
+```
+Generation failed: CUDA Out of Memory!
+```
+
+To free up VRAM, close GPU-intensive applications:
+```bash
+sudo pkill -f 'main.py'  # ComfyUI
+```
 
 ## Related Projects
 
