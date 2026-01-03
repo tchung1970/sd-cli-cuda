@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - CUDA memory check before image generation
   - Displays GPU device info and memory status (free/total/used)
-  - Warns user when free GPU memory is below 4GB threshold
+  - Exits immediately with error when free GPU memory is below 4GB
   - Suggests closing GPU-intensive applications like ComfyUI
   - Provides kill commands for ComfyUI processes
 
