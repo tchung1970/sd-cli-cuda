@@ -98,7 +98,7 @@ Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 | Field | Value |
 |-------|-------|
 | Package Name | sd-cli-cuda |
-| Version | 1.0.0 |
+| Version | 1.0.1 |
 | Architecture | amd64 |
 | License | MIT (upstream) |
 | Source | https://github.com/leejet/stable-diffusion.cpp |
@@ -118,7 +118,21 @@ nvidia-smi
 ```
 
 ### Out of VRAM
-Try reducing image dimensions or use a quantized model (.gguf).
+sd-cli automatically checks GPU memory before running and warns if memory is low:
+```
+[INFO] CUDA device 0: NVIDIA RTX 4000 Ada Generation
+[INFO]   Memory: 2048 MB free / 20408 MB total (18360 MB used)
+[WARN] WARNING: CUDA device 0 has only 2048 MB free memory!
+[WARN]   Stable Diffusion typically requires at least 4096 MB of GPU memory.
+[WARN]   Please close GPU-intensive applications to free up memory:
+[WARN]     - ComfyUI, Other AI/ML applications, Video editors
+[WARN]   To kill ComfyUI: pkill -f comfyui || pkill -f ComfyUI
+```
+
+To free up VRAM:
+- Close ComfyUI: `pkill -f comfyui || pkill -f ComfyUI`
+- Close other GPU-intensive applications
+- Try reducing image dimensions or use a quantized model (.gguf)
 
 ## Related Projects
 
