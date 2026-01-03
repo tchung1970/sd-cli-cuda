@@ -127,7 +127,7 @@ nvidia-smi
 ```
 
 ### Out of VRAM
-sd-cli automatically checks GPU memory before running and displays a clean error message:
+sd-cli automatically checks GPU memory before running (requires 8GB free) and displays a clean error message:
 ```
 CUDA Out of Memory!
 ```

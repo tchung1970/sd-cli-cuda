@@ -56,7 +56,7 @@ in_log_cb && /^\}/ {
     print "#include <cuda_runtime.h>"
     print "// Check if CUDA has enough memory using CUDA runtime directly"
     print "// This avoids triggering ggml_cuda_init which prints unwanted output"
-    print "bool check_cuda_memory(size_t min_required_mb = 4096) {"
+    print "bool check_cuda_memory(size_t min_required_mb = 8192) {"
     print "    int device_count = 0;"
     print "    cudaError_t err = cudaGetDeviceCount(&device_count);"
     print "    if (err != cudaSuccess || device_count == 0) {"

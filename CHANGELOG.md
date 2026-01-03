@@ -6,8 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - CUDA memory check before image generation
-  - Exits immediately with "CUDA Out of Memory!" when free GPU memory is below 4GB
+  - Exits immediately with "CUDA Out of Memory!" when free GPU memory is below 8GB
   - Checks memory before any CUDA initialization to provide clean error messages
+  - Prevents silent failures that result in empty/blank images
 
 ### Changed
 - Improved CUDA error messages for wavespeed-desktop integration
