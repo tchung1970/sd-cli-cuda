@@ -121,18 +121,13 @@ nvidia-smi
 sd-cli automatically checks GPU memory before running and exits immediately if memory is insufficient:
 ```
 [INFO ] CUDA device 0: NVIDIA RTX 4000 Ada Generation
-[INFO ]   Memory: 2048 MB free / 20408 MB total (18360 MB used)
-[ERROR] CUDA device 0 has only 2048 MB free memory!
-[ERROR] Stable Diffusion requires at least 4096 MB of GPU memory.
-[ERROR] Please close GPU-intensive applications to free up memory:
-[ERROR]   - ComfyUI, Other AI/ML applications, Video editors
-[ERROR] To kill ComfyUI: pkill -f comfyui || pkill -f ComfyUI
+[INFO ]   Memory: 3851 MB free / 20008 MB total (16157 MB used)
+[WARN ] CUDA out of memory!
+[WARN ]   Device 0 (NVIDIA RTX 4000 Ada Generation) has only 3851 MB free, need 4096 MB
+[WARN ]   Close GPU apps (ComfyUI, etc): pkill -f comfyui
 ```
 
-To free up VRAM:
-- Close ComfyUI: `pkill -f comfyui || pkill -f ComfyUI`
-- Close other GPU-intensive applications
-- Try reducing image dimensions or use a quantized model (.gguf)
+To free up VRAM, close ComfyUI: `pkill -f comfyui`
 
 ## Related Projects
 
