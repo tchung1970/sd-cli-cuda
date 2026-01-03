@@ -3,7 +3,7 @@ set -e
 
 # Configuration
 PKG_NAME="sd-cli-cuda"
-PKG_VERSION="1.0.0"
+PKG_VERSION="1.0.1"
 PKG_ARCH="amd64"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="${SCRIPT_DIR}/src"
@@ -22,6 +22,10 @@ mkdir -p "$DEB_BUILD_DIR"
 echo "Cloning stable-diffusion.cpp (shallow)..."
 rm -rf "$SRC_DIR"
 git clone --depth 1 --recursive --shallow-submodules https://github.com/leejet/stable-diffusion.cpp "$SRC_DIR"
+
+# Apply CUDA memory check modification
+cd "$SRC_DIR"
+"${SCRIPT_DIR}/apply-cuda-memory-check.sh"
 
 # Build with CUDA
 echo "Building with CUDA support..."

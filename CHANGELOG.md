@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-01-03
+
+### Added
+- CUDA memory check before image generation
+  - Displays GPU device info and memory status (free/total/used)
+  - Warns user when free GPU memory is below 4GB threshold
+  - Suggests closing GPU-intensive applications like ComfyUI
+  - Provides kill commands for ComfyUI processes
+
 ## [1.0.0] - 2025-12-28
 
 ### Fixed
