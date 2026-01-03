@@ -61,7 +61,7 @@ Version: ${PKG_VERSION}
 Section: graphics
 Priority: optional
 Architecture: ${PKG_ARCH}
-Depends: libc6, libstdc++6, libgomp1
+Depends: libc6, libstdc++6, libgomp1, libcudart12, libcublas12, libcublaslt12
 Suggests: nvidia-cuda-toolkit
 Maintainer: Thomas Chung <tchung1970@gmail.com>
 Description: Stable Diffusion inference with CUDA support

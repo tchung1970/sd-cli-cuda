@@ -43,7 +43,12 @@ sudo apt install -y \
 - `libc6`
 - `libstdc++6`
 - `libgomp1`
+- `libcudart12` - CUDA runtime library
+- `libcublas12` - CUDA BLAS library
+- `libcublaslt12` - CUDA BLAS LT library
 - NVIDIA drivers (with CUDA support)
+
+These CUDA libraries are automatically installed when using `apt install ./sd-cli-cuda_*.deb`.
 
 ## Building
 
@@ -61,7 +66,11 @@ Build time: ~3-5 minutes depending on hardware.
 ## Installation
 
 ```bash
-sudo dpkg -i sd-cli-cuda_amd64.deb
+# Recommended: auto-installs CUDA dependencies
+sudo apt install ./sd-cli-cuda_1.0.1_amd64.deb
+
+# Or manually (requires CUDA libs already installed)
+sudo dpkg -i sd-cli-cuda_1.0.1_amd64.deb
 ```
 
 ### What Gets Installed
