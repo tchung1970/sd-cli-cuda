@@ -36,14 +36,6 @@ TMP_FILE=$(mktemp)
 
 # Process the file
 awk '
-# Add include after stable-diffusion.h
-/#include "stable-diffusion.h"/ {
-    print
-    print ""
-    print "// CUDA memory check uses cuda_runtime.h directly (included in function below)"
-    next
-}
-
 # Add function after sd_log_cb closing brace
 /^void sd_log_cb.*\{/ {
     in_log_cb = 1
@@ -52,10 +44,8 @@ in_log_cb && /^\}/ {
     print
     in_log_cb = 0
     print ""
-    print "#ifdef SD_USE_CUDA"
     print "#include <cuda_runtime.h>"
-    print "// Check if CUDA has enough memory using CUDA runtime directly"
-    print "// This avoids triggering ggml_cuda_init which prints unwanted output"
+    print "#include <cstdio>"
     print "bool check_cuda_memory(size_t min_required_mb = 8192) {"
     print "    int device_count = 0;"
     print "    cudaError_t err = cudaGetDeviceCount(&device_count);"
@@ -64,21 +54,48 @@ in_log_cb && /^\}/ {
     print "    }"
     print "    for (int i = 0; i < device_count; i++) {"
     print "        cudaSetDevice(i);"
-    print "        size_t free_mem = 0;"
-    print "        size_t total_mem = 0;"
+    print "        size_t free_mem = 0, total_mem = 0;"
     print "        cudaMemGetInfo(&free_mem, &total_mem);"
     print "        size_t free_mb = free_mem / (1024 * 1024);"
     print "        size_t total_mb = total_mem / (1024 * 1024);"
     print "        if (free_mb < min_required_mb) {"
+    print "            const char* tmpfile = \"/tmp/cuda_oom_detail.txt\";"
+    print "            FILE* f = fopen(tmpfile, \"w\");"
+    print "            if (f) {"
+    print "                fprintf(f, \"Free VRAM: %.1fGB / %.1fGB (need %.1fGB)\\n\\n\","
+    print "                        free_mb/1024.0, total_mb/1024.0, min_required_mb/1024.0);"
+    print "                fprintf(f, \"GPU Processes:\\n\");"
+    print "                FILE* fp = popen(\"nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv,noheader,nounits 2>/dev/null\", \"r\");"
+    print "                if (fp) {"
+    print "                    char line[512];"
+    print "                    while (fgets(line, sizeof(line), fp)) fprintf(f, \"  %s\", line);"
+    print "                    pclose(fp);"
+    print "                }"
+    print "                fprintf(f, \"\\nTo free VRAM:\\n  sudo pkill -f main.py\\n\");"
+    print "                fclose(f);"
+    print "            FILE* script = fopen(\"/tmp/cuda_oom_popup.sh\", \"w\");"
+    print "            if (script) {"
+    print "                fprintf(script, \"#!/bin/bash\\n\");"
+    print "                fprintf(script, \"export DISPLAY=${DISPLAY:-:0}\\n\");"
+    print "                fprintf(script, \"zenity --text-info --title=\\\"CUDA Out of Memory\\\" --filename=/tmp/cuda_oom_detail.txt --width=500 --height=300 >/dev/null 2>&1 &\\n\");"
+    print "                fprintf(script, \"sleep 0.5\\n\");"
+    print "                fprintf(script, \"GEO=$(xdotool getdisplaygeometry 2>/dev/null || echo 1920 1080)\\n\");"
+    print "                fprintf(script, \"GW=${GEO%%%% *}\\n\");"
+    print "                fprintf(script, \"GH=${GEO##* }\\n\");"
+    print "                fprintf(script, \"PX=$(( (GW - 500) / 2 ))\\n\");"
+    print "                fprintf(script, \"PY=$(( (GH - 300) / 2 ))\\n\");"
+    print "                fprintf(script, \"xdotool search --sync --name \\\"CUDA Out of Memory\\\" windowmove $PX $PY >/dev/null 2>&1\\n\");"
+    print "                fclose(script);"
+    print "            }"
+    print "            system(\"sh /tmp/cuda_oom_popup.sh >/dev/null 2>&1 &\");"
+    print "            }"
     print "            fprintf(stderr, \"CUDA Out of Memory!\\n\");"
     print "            fflush(stderr);"
-    print "            exit(1);"
+    print "            _Exit(1);"
     print "        }"
     print "    }"
-    print "    cudaDeviceReset();"
     print "    return true;"
     print "}"
-    print "#endif"
     next
 }
 
@@ -86,9 +103,7 @@ in_log_cb && /^\}/ {
 /LOG_DEBUG.*gen_params\.to_string/ {
     print
     print ""
-    print "#ifdef SD_USE_CUDA"
     print "    check_cuda_memory();"
-    print "#endif"
     next
 }
 

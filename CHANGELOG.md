@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-05-09
+
+### Fixed
+- CUDA memory pre-check now actually compiles and runs
+  - Removed broken `#ifdef SD_USE_CUDA` guards: newer GGML uses `GGML_BACKEND_DL` which prevents `GGML_USE_CUDA` from being defined, so the entire check compiled to nothing
+  - Changed `exit(1)` to `_Exit(1)` to bypass C++ destructors and prevent SIGABRT crash on early exit
+
+### Changed
+- Enhanced VRAM error output
+  - Shows free/total VRAM in GB and the 8GB minimum requirement
+  - Lists all GPU processes with PID, name, and VRAM usage via `nvidia-smi`
+  - Includes `sudo pkill -f main.py` tip to free VRAM from ComfyUI
+- Added zenity popup for detailed VRAM error info
+  - Detail popup appears centered on screen when generation is blocked by low VRAM
+  - Popup is fully detached from the sd-cli process (stderr redirect) so wavespeed-desktop updates immediately with `CUDA Out of Memory!` on close
+  - `xdotool` installed automatically via postinst if not present
+
 ## [1.0.1] - 2026-01-03
 
 ### Added

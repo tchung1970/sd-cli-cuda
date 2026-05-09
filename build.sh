@@ -3,7 +3,7 @@ set -e
 
 # Configuration
 PKG_NAME="sd-cli-cuda"
-PKG_VERSION="1.0.1"
+PKG_VERSION="1.0.2"
 PKG_ARCH="amd64"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="${SCRIPT_DIR}/src"
@@ -86,6 +86,11 @@ EOF
 cat > "${DEB_DIR}/DEBIAN/postinst" << 'EOF'
 #!/bin/bash
 set -e
+
+# Install xdotool for popup centering if not already present
+if ! command -v xdotool > /dev/null 2>&1; then
+    apt-get install -y xdotool > /dev/null 2>&1 || true
+fi
 
 # Create symlink so wavespeed-desktop can find the binary
 # wavespeed-desktop checks ~/.config/wavespeed-desktop/sd-bin/sd

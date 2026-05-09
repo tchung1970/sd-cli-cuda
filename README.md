@@ -47,8 +47,10 @@ sudo apt install -y \
 - `libcublas12` - CUDA BLAS library
 - `libcublaslt12` - CUDA BLAS LT library
 - NVIDIA drivers (with CUDA support)
+- `zenity` - VRAM error popup dialog
+- `xdotool` - popup window centering (auto-installed by postinst if missing)
 
-These CUDA libraries are automatically installed when using `apt install ./sd-cli-cuda_*.deb`.
+These dependencies are automatically installed when using `apt install ./sd-cli-cuda_*.deb`.
 
 ## Building
 
@@ -67,10 +69,10 @@ Build time: ~3-5 minutes depending on hardware.
 
 ```bash
 # Recommended: auto-installs CUDA dependencies
-sudo apt install ./sd-cli-cuda_1.0.1_amd64.deb
+sudo apt install ./sd-cli-cuda_1.0.2_amd64.deb
 
 # Or manually (requires CUDA libs already installed)
-sudo dpkg -i sd-cli-cuda_1.0.1_amd64.deb
+sudo dpkg -i sd-cli-cuda_1.0.2_amd64.deb
 ```
 
 ### What Gets Installed
@@ -107,7 +109,7 @@ Sample output (generated on NVIDIA RTX 4000 Ada Generation):
 | Field | Value |
 |-------|-------|
 | Package Name | sd-cli-cuda |
-| Version | 1.0.1 |
+| Version | 1.0.2 |
 | Architecture | amd64 |
 | License | MIT (upstream) |
 | Source | https://github.com/leejet/stable-diffusion.cpp |
@@ -127,17 +129,15 @@ nvidia-smi
 ```
 
 ### Out of VRAM
-sd-cli automatically checks GPU memory before running (requires 8GB free) and displays a clean error message:
-```
-CUDA Out of Memory!
-```
+sd-cli checks GPU memory before running and requires 8GB free. When VRAM is insufficient:
 
-In wavespeed-desktop, this appears as:
-```
-Generation failed: CUDA Out of Memory!
-```
+1. wavespeed-desktop shows `CUDA Out of Memory!` in the error banner
+2. A popup dialog appears with full details:
+   - Free/total VRAM in GB
+   - List of GPU processes consuming VRAM (PID, name, usage)
+   - Command to free VRAM
 
-To free up VRAM, close GPU-intensive applications:
+To free VRAM, close GPU-intensive applications:
 ```bash
 sudo pkill -f 'main.py'  # ComfyUI
 ```
