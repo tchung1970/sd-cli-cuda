@@ -47,10 +47,10 @@ sudo apt install -y \
 - `libcublas12` - CUDA BLAS library
 - `libcublaslt12` - CUDA BLAS LT library
 - NVIDIA drivers (with CUDA support)
-- `zenity` - VRAM error popup dialog
+- `zenity` - VRAM error popup dialog (pre-installed on Ubuntu 24.04 GNOME)
 - `xdotool` - popup window centering (auto-installed by postinst if missing)
 
-These dependencies are automatically installed when using `apt install ./sd-cli-cuda_*.deb`.
+CUDA libraries are automatically installed when using `apt install ./sd-cli-cuda_*.deb`.
 
 ## Building
 

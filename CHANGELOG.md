@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
   - Includes `sudo pkill -f main.py` tip to free VRAM from ComfyUI
 - Added zenity popup for detailed VRAM error info
   - Detail popup appears centered on screen when generation is blocked by low VRAM
-  - Popup is fully detached from the sd-cli process (stderr redirect) so wavespeed-desktop updates immediately with `CUDA Out of Memory!` on close
+  - Popup is fully detached from the sd-cli process (stderr redirect) so wavespeed-desktop shows `CUDA Out of Memory!` immediately without waiting for the popup to be closed
   - `xdotool` installed automatically via postinst if not present
 
 ## [1.0.1] - 2026-01-03
